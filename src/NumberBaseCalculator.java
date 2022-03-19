@@ -56,17 +56,16 @@ public class NumberBaseCalculator {
     public static String Menu() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println();
-        System.out.println("------------------------------------------------");
-        System.out.println("                    MENU");
         System.out.println("------------------------------------------------");
         System.out.println("Choose what operation you want to perform: ");
+        System.out.println("");
         System.out.println("A. Convert from any system to the decimal system: ");
         System.out.println("B. Convert from Decimal system to another system: ");
         System.out.println("C. Summing up numbers from different systems: ");
         System.out.println("D. Subtracting numbers from different systems: ");
         System.out.println("E. Multiplying numbers from different systems: ");
         System.out.println("F. Dividing numbers from different systems: ");
+        System.out.println("");
         System.out.println("Type any key to Exit the program: ");
 
         return sc.next();
