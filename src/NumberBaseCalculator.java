@@ -14,14 +14,14 @@ public class NumberBaseCalculator {
                 System.out.println("_______________________________");
                 Scanner sc = new Scanner(System.in);
                 System.out.println("Please enter the number base you'd like us convert to a decimal. ");
-                char base = sc.next().charAt(0);
+                String base = sc.next();
 
                 System.out.println("Please input the number");
                 String number = sc.next();
 
                 System.out.println("____________________________________________________________");
-                System.out.println("Solution = " + ConvertToDecimal(number, base) + " base " + "10");
-                System.out.println("");
+                System.out.println("Solution = " + ConvertToDecimal(number, Integer.parseInt(base)) + " base " + "10");
+                System.out.println();
 
             } else if (choice.equals("B") || choice.equals("b")) {
                 System.out.println("_______________________________");
@@ -44,7 +44,7 @@ public class NumberBaseCalculator {
             } else if (choice.equals("E") || choice.equals("e")) {
                 System.out.println("Solution: " + MultiplyNumberSystem());
             } else if (choice.equals("F") || choice.equals("f")) {
-                System.out.println("Solution: " +  DivideNumberSystem());
+                System.out.println("Solution: " + DivideNumberSystem());
             } else {
                 System.out.println("Exiting....");
                 active = false;
@@ -74,27 +74,27 @@ public class NumberBaseCalculator {
 
     //method to convert to decimal
     public static String AddNumberSystem() {
-        return CalulateNumberSystem("sum");
+        return CalculateNumberSystem("sum");
     }
 
     //method to convert to decimal
     public static String DivideNumberSystem() {
-        return CalulateNumberSystem("divide");
+        return CalculateNumberSystem("divide");
     }
 
     //method to convert to decimal
     public static String SubtractNumberSystem() {
-        return CalulateNumberSystem("subtract");
+        return CalculateNumberSystem("subtract");
     }
 
     //method to convert to decimal
     public static String MultiplyNumberSystem() {
-        return CalulateNumberSystem("multiply");
+        return CalculateNumberSystem("multiply");
     }
 
 
     //method to convert to decimal
-    public static int ConvertToDecimal(String number, char base) {
+    public static int ConvertToDecimal(String number, int base) {
         char values;
         List<Character> reversedArray;
         List<Character> singleNumber = new ArrayList<>();
@@ -104,13 +104,15 @@ public class NumberBaseCalculator {
             singleNumber.add(values);
         }
         reversedArray = new ArrayList<>(reverseArray(singleNumber));
+
         int answer = compute(reversedArray, base);
         return answer;
     }
 
-    //method to convert to decimal
-    public static String CalulateNumberSystem(String sign) {
-        char values;
+    //method to calculate number system
+    //this method gets two values from the user and the number base,
+    // it first converts the values to decimal and then convert it back to its original base with the help of another method
+    public static String CalculateNumberSystem(String sign) {
         String answer;
         int computeDecimals;
 
@@ -119,7 +121,7 @@ public class NumberBaseCalculator {
         System.out.println("_______________________________");
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter the number base. ");
-        char base = sc.next().charAt(0);
+        String base = sc.next();
 
         System.out.println("Please enter the first number you want to add. ");
         String firstNumber = sc.next();
@@ -127,8 +129,8 @@ public class NumberBaseCalculator {
         System.out.println("Please enter the second number. ");
         String SecondNumber = sc.next();
 
-        int convertedToDecimal1 = ConvertToDecimal(firstNumber, base);
-        int convertedToDecimal2 = ConvertToDecimal(SecondNumber, base);
+        int convertedToDecimal1 = ConvertToDecimal(firstNumber, Integer.parseInt(base));
+        int convertedToDecimal2 = ConvertToDecimal(SecondNumber, Integer.parseInt(base));
 
         if (sign.equals("sum")) {
             computeDecimals = convertedToDecimal1 + convertedToDecimal2;
@@ -140,7 +142,7 @@ public class NumberBaseCalculator {
             computeDecimals = convertedToDecimal1 * convertedToDecimal2;
         }
 
-        answer = ConvertDecimalToAnyNumberBase(computeDecimals, Character.getNumericValue(base));
+        answer = ConvertDecimalToAnyNumberBase(computeDecimals, Integer.parseInt(base));
         return answer;
     }
 
@@ -166,6 +168,7 @@ public class NumberBaseCalculator {
 
 
     //method to reverse data in an array
+
     public static List<Character> reverseArray(List<Character> singleNumber) {
         List<Character> newList = new ArrayList<>();
 
@@ -180,8 +183,7 @@ public class NumberBaseCalculator {
 
 
     //method to compute number * base ^ index
-    public static int compute(List<Character> value, char basee) {
-        int base = Character.getNumericValue(basee);
+    public static int compute(List<Character> value, int base) {
         double total;
         int sum = 0;
 
