@@ -3,11 +3,11 @@ class Car{
     private String brand;
     private int year;
     private String color;
-    private float quantity;
-    private float price;
+    private double quantity;
+    private double price;
 
 
-    public Car(String model, String brand, int year, int price, String color, int quantity) {
+    public Car(String model, String brand, int year, double price, String color, int quantity) {
         this.model = model;
         this.color = color;
         this.price = price;
@@ -40,11 +40,11 @@ class Car{
         this.year = year;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -56,7 +56,7 @@ class Car{
         this.color = color;
     }
 
-    public float getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
@@ -90,21 +90,20 @@ class Car{
 
 public class CarApp{
     public static void main(String[] args) {
-        Car cr = new Car("3000", "Tesla", 2021, 300000, "grey", 20);
+        Car car1 = new Car("Tesla","tesla motors",2014,20000.00,"grey",500);
+        Car car2 = new Car("Lamborghini","toyota",2015,40000.00,"white",200);
 
-        System.out.println(cr.toString());
-        cr.sell(10);
+        System.out.println(car1.toString());
+        System.out.println(car2.toString());
 
-        System.out.println(cr.getColor());
-        cr.setColor("Blue");
+        car1.sell(300);
+        car1.setColor("green");
+        car2.delivery(2000);
 
-        int year = cr.getYear();
-        cr.setYear(2022);
-
-        System.out.println(cr.getModel());
-        System.out.println(cr.getQuantity());
-        System.out.println(cr.toString());
-        System.out.println(cr.getBrand());
-        System.out.println(cr.getPrice());
+        System.out.println("");
+        System.out.println(car1.toString());
+        car2.delivery(1000);
+        car2.setColor("grey");
+        System.out.println(car2.toString());
     }
 }
