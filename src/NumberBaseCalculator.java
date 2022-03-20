@@ -58,14 +58,14 @@ public class NumberBaseCalculator {
 
         System.out.println("------------------------------------------------");
         System.out.println("Choose what operation you want to perform: ");
-        System.out.println("");
+        System.out.println();
         System.out.println("A. Convert from any system to the decimal system: ");
         System.out.println("B. Convert from Decimal system to another system: ");
         System.out.println("C. Summing up numbers from different systems: ");
         System.out.println("D. Subtracting numbers from different systems: ");
         System.out.println("E. Multiplying numbers from different systems: ");
         System.out.println("F. Dividing numbers from different systems: ");
-        System.out.println("");
+        System.out.println();
         System.out.println("Type any key to Exit the program: ");
 
         return sc.next();
@@ -148,17 +148,18 @@ public class NumberBaseCalculator {
 
     //method to convert decimal to any number base
     public static String ConvertDecimalToAnyNumberBase(int number, int base) {
-        int values, n;
-        List<Character> remainderList = new ArrayList<>();
-        n = number;
         String joinedString = "";
-
+        int values, n;
+        n = number;
+        //list to store remainders
+        List<Character> remainderList = new ArrayList<>();
+        //loop to store each remainder in the remainderList
         for (int i = 0; n > 0; i++) {
             values = n % base;
             remainderList.add(Character.forDigit(values, 10));
             n /= base;
         }
-
+        //loop to concat string stored in the reverse array to another stringed variable
         for (int i = 0; i < reverseArray(remainderList).size(); i++) {
             joinedString += reverseArray(remainderList).get(i);
         }
@@ -167,7 +168,6 @@ public class NumberBaseCalculator {
 
 
     //method to reverse data in an array
-
     public static List<Character> reverseArray(List<Character> singleNumber) {
         List<Character> newList = new ArrayList<>();
 
